@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Smoke Tracker",
+  "version": "2.0",
+  "description": "An awareness tool to track your smoking habits, daily consumption, and financial costs to help you reduce it.",
+  "permissions": ["storage", "alarms"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

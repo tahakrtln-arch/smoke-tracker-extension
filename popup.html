@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cigarette Tracker</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app">
+
+    <div class="health-warning">⚠ WARNING: Smoking causes serious health issues and harms those around you.</div>
+
+    <!-- ONBOARDING -->
+    <div id="onboarding" class="screen hidden">
+      <h2>Setup</h2>
+
+      <div id="ob-step1">
+        <p class="q">Are you starting a new pack, or already using an open one?</p>
+        <div class="btn-row">
+          <button id="btn-new-pack" class="btn primary">New Pack</button>
+          <button id="btn-open-pack" class="btn secondary">Open Pack</button>
+        </div>
+        <div id="open-pack-input" class="hidden">
+          <label for="open-count">How many left?</label>
+          <input type="number" id="open-count" min="1" value="10">
+          <button id="btn-confirm-open" class="btn primary small">Confirm</button>
+        </div>
+      </div>
+
+      <div id="ob-step2" class="hidden">
+        <label for="pack-size">How many cigarettes in a pack?</label>
+        <input type="number" id="pack-size" min="1" value="20">
+
+        <label for="pack-price">What is the price of a pack?</label>
+        <input type="number" id="pack-price" min="0" step="0.5" value="70">
+
+        <label for="currency-select">Currency</label>
+        <select id="currency-select">
+          <option value="$">$ (USD)</option>
+          <option value="€">€ (EUR)</option>
+          <option value="£">£ (GBP)</option>
+          <option value="TL" selected>TL (Turkish Lira)</option>
+          <option value="₹">₹ (INR)</option>
+          <option value="custom">Other (type manually)</option>
+        </select>
+        <input type="text" id="currency-custom" class="hidden" placeholder="e.g. CHF, kr, R$" maxlength="5">
+
+        <button id="btn-finish-onboarding" class="btn primary">Start</button>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="screen hidden">
+      <div class="header">
+        <div class="date" id="today-date"></div>
+        <button id="btn-goto-stats" class="icon-btn" title="Statistics">📊</button>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-box">
+          <span class="stat-value" id="today-smoked">0</span>
+          <span class="stat-label">Smoked Today</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value" id="today-spent">0</span>
+          <span class="stat-label">Spent Today</span>
+        </div>
+        <div class="stat-box" id="packs-finished-box">
+          <span class="stat-value" id="packs-finished">0</span>
+          <span class="stat-label">Packs Finished</span>
+        </div>
+      </div>
+
+      <div class="cig-bar-wrap">
+        <div class="cigarette-container">
+          <div class="filter"></div>
+          <div class="paper-area">
+            <div class="paper" id="cig-bar-fill">
+              <div class="fire"></div>
+            </div>
+          </div>
+        </div>
+        <div class="cig-bar-label" id="remaining-label">20 cigarettes left in pack</div>
+      </div>
+
+      <div class="timer-box">
+        <span class="timer-label">Time since last cigarette:</span>
+        <span class="timer-value" id="timer-value">00:00:00</span>
+      </div>
+
+      <div class="action-row">
+        <button id="btn-plus-one" class="btn primary big">+1</button>
+        <button id="btn-undo" class="btn undo" title="Undo" disabled>↩ Undo</button>
+      </div>
+
+      <button id="btn-new-pack-action" class="btn primary big hidden">Start New Pack</button>
+    </div>
+
+    <!-- ANALYTICS -->
+    <div id="analytics" class="screen hidden">
+      <div class="header">
+        <button id="btn-back-dashboard" class="icon-btn" title="Back">←</button>
+        <h2>Statistics</h2>
+        <div class="range-select">
+          <select id="range-select">
+            <option value="daily">Daily</option>
+            <option value="weekly" selected>Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+        </div>
+      </div>
+
+      <canvas id="stats-chart" height="180"></canvas>
+
+      <div class="finance-summary">
+        <div class="finance-box">
+          <span class="finance-value" id="week-spent">0</span>
+          <span class="finance-label">Spent This Week</span>
+        </div>
+        <div class="finance-box">
+          <span class="finance-value" id="month-spent">0</span>
+          <span class="finance-label">Spent This Month</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="chart.umd.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

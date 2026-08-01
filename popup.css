@@ -1,0 +1,367 @@
+:root {
+  --bg: #f7f7fb;
+  --card-bg: #ffffff;
+  --text: #1c1c1e;
+  --text-secondary: #6e6e73;
+  --primary: #ff8a00;
+  --primary-dark: #e07600;
+  --danger: #d94f4f;
+  --border: #e5e5ea;
+  --shadow: 0 4px 14px rgba(0,0,0,0.08);
+  --radius: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1c1e;
+    --card-bg: #2c2c2e;
+    --text: #f2f2f7;
+    --text-secondary: #9a9a9e;
+    --border: #3a3a3c;
+    --shadow: 0 4px 14px rgba(0,0,0,0.4);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 340px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  padding: 16px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.health-warning {
+  background: #2c2c2e;
+  color: #ffcc66;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  padding: 6px 8px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+}
+
+.screen h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.q {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, opacity 0.2s ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn.primary {
+  background: var(--primary);
+  color: white;
+  box-shadow: var(--shadow);
+}
+.btn.primary:hover { background: var(--primary-dark); }
+
+.btn.secondary {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn.small { padding: 6px 12px; font-size: 12px; margin-top: 8px; }
+
+.btn.big {
+  width: 100%;
+  padding: 16px;
+  font-size: 20px;
+  border-radius: var(--radius);
+}
+
+.btn.undo {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  padding: 8px 10px;
+  margin-left: 8px;
+}
+
+.btn-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+#open-pack-input {
+  background: var(--card-bg);
+  padding: 12px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-top: 8px;
+}
+
+#open-pack-input label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+#ob-step2 {
+  background: var(--card-bg);
+  padding: 14px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+#ob-step2 label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  margin-top: 10px;
+}
+#ob-step2 label:first-child { margin-top: 0; }
+
+input[type="number"],
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+#btn-finish-onboarding {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.date {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.icon-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.stats-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.stat-box {
+  flex: 1;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.stat-value {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.stat-label {
+  display: block;
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* ================== SİGARA BARI ==================
+   Sol: sabit kahverengi filtre (%20 genişlik)
+   Sağ: beyaz gövde konteyneri (%80 genişlik), içindeki fill sağdan sola kısalır
+   En sağ uçta (fill'in sağ kenarında) ateş efekti
+*/
+.cig-bar-wrap {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px 12px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.cigarette-container {
+  display: flex;
+  height: 32px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #2a2a2a;
+}
+
+.filter {
+  width: 25%;
+  height: 100%;
+  background: #ce9052;
+  flex-shrink: 0;
+}
+
+.paper-area {
+  flex-grow: 1;
+  height: 100%;
+  background: transparent;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.paper {
+  height: 100%;
+  width: 100%; /* JS ile 0-100 arası güncellenir */
+  background: #ffffff;
+  position: relative;
+  transition: width 0.3s ease;
+}
+
+.fire {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 14px;
+  background: linear-gradient(to left, #ff2a00, #ff9000);
+  box-shadow: -2px 0 10px rgba(255, 60, 0, 0.8);
+}
+
+.paper.empty .fire {
+  display: none;
+}
+
+.cig-bar-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 10px;
+}
+
+.timer-box {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timer-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.timer-value {
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.action-row {
+  display: flex;
+  align-items: stretch;
+}
+
+.action-row .btn.primary.big {
+  flex: 1;
+}
+
+.finance-summary {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.finance-box {
+  flex: 1;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 12px;
+  text-align: center;
+}
+
+.finance-value {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.finance-label {
+  display: block;
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.range-select select {
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  font-size: 12px;
+}
+
+#analytics .header {
+  gap: 8px;
+}
+
+#stats-chart {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 8px;
+  margin-bottom: 8px;
+}
