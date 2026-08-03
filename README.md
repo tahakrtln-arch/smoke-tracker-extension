@@ -2,7 +2,7 @@
 
 Smoke Tracker is a simple, modern, and privacy-focused extension designed to help you gain control over your smoking habits. By providing a clear visual representation of your daily consumption and financial costs, this tool aims to create awareness and assist you in your journey to reduce or quit smoking.
 
-> **Status:** Submitted for review on Chrome Web Store. Link coming soon! ⏳
+> 🎉 **Available now on the Chrome Web Store:** [Download Smoke Tracker Here](https://chromewebstore.google.com/detail/eoaocmicfhnikpkhcjoammneibjicaki?utm_source=item-share-cb)
 
 ## ✨ Key Features
 
